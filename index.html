@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+    type="text/javascript"
+    charset="utf8"
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+  ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.2/xlsx.full.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"
+    />
+  
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"
+    ></script>
+  </head>
+  <body>
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">DTDC Sat sarees</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <div class="container m-5">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex">
+            <!-- <h3>Upload Excel Sheet</h3> -->
+            <div class="justify-content-center">
+              <input
+                type="file"
+                accept="application/vnd.ms-excel"
+                id="fileInput"
+              />
+              <button type="button" class="btn btn-primary">Upload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+         <!--   -->
+         <table id="dataTable"></table>
+      </div>
+    </div>
+    <!-- srcript js -->
+    <script src="index.js"></script>
+  </body>
+</html>
