@@ -1,6 +1,15 @@
 $(document).ready(function () {
-  datatoserver = {};
 
+  // get local storage data
+  var data = localStorage.getItem("data");
+  if (data == "success") {
+    // remove d-none class from export button
+    $("#btnExport").removeClass("d-none");
+    // remove local storage data
+    localStorage.removeItem("data");
+  }
+
+  datatoserver = {};
   $('input[type="file"]').change(function (e) {
     var fileName = e.target.files[0].name;
     alert('The file "' + fileName + '" has been selected.');
@@ -67,15 +76,22 @@ $(document).ready(function () {
           var pincode = element.DSR_DEST_PIN;
           var weight = element.DSR_CN_WEIGHT;
           var mode = element.DSR_MODE;
+          var cnno = element.DSR_CNNO;
+
           datatoserver[i] = {
             pincode: pincode,
             weight: weight,
             mode: mode,
+            ccno: cnno,
           };
         }
         console.log(datatoserver);
       };
       reader.readAsArrayBuffer(file);
+      $(".btn").text("Processing...");
+      $(".btn").append(
+        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>'
+      );
       setTimeout(function () {
         sendData(datatoserver);
       }, 2000);
@@ -84,6 +100,7 @@ $(document).ready(function () {
 });
 
 function sendData(datatoserver) {
+  localStorage.setItem("data", "success");
   $.ajax({
     type: "POST",
     url: "http://127.0.0.1:5000/download_csv",
@@ -91,7 +108,10 @@ function sendData(datatoserver) {
     contentType: "application/json",
     success: function (response) {
       console.log(response);
+      setTimeout(function () {
+      localStorage.setItem("data", "success");
       window.location.href = "http://127.0.0.1:5000/download_file";
+      }, 1000);
     },
   });
 }
